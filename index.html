@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="is">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>steinim00 – Verkefnin mín</title>
+<meta name="description" content="Tenglar á öll verkefni og GitHub-síður steinim00.">
+<style>
+  :root {
+    --bg: #f5f6fb;
+    --bg-glow-1: #c9d6ff;
+    --bg-glow-2: #f3d1ff;
+    --card: rgba(255, 255, 255, .75);
+    --card-border: rgba(20, 24, 60, .08);
+    --text: #14173a;
+    --muted: #5b6088;
+    --accent: #5b5bf0;
+    --accent-2: #c04bf0;
+    --shadow: 0 10px 30px rgba(40, 40, 120, .12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0d1f;
+      --bg-glow-1: #25306e;
+      --bg-glow-2: #4a1d6b;
+      --card: rgba(255, 255, 255, .06);
+      --card-border: rgba(255, 255, 255, .1);
+      --text: #f1f2ff;
+      --muted: #a4a9d6;
+      --accent: #8b8bff;
+      --accent-2: #e07bff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .4);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(60rem 40rem at 10% -10%, var(--bg-glow-1), transparent 60%),
+      radial-gradient(50rem 35rem at 100% 0%, var(--bg-glow-2), transparent 55%),
+      var(--bg);
+    background-attachment: fixed;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 16px 40px; }
+
+  header { text-align: center; margin-bottom: 36px; }
+  .avatar {
+    width: 112px; height: 112px; border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: var(--shadow);
+  }
+  .avatar img { width: 100%; height: 100%; border-radius: 50%; display: block; background: var(--bg); }
+  h1 { margin: 18px 0 6px; font-size: 1.9rem; letter-spacing: -.02em; }
+  header p { margin: 0; color: var(--muted); }
+  .profile {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 16px; padding: 9px 16px; border-radius: 999px;
+    color: #fff; text-decoration: none; font-weight: 600; font-size: .95rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: var(--shadow);
+    transition: transform .15s ease, filter .15s ease;
+  }
+  .profile:hover { transform: translateY(-2px); filter: brightness(1.08); }
+
+  .links { display: grid; gap: 14px; list-style: none; margin: 0; padding: 0; }
+  .card {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 18px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    color: inherit; text-decoration: none;
+    transition: transform .18s ease, border-color .18s ease;
+  }
+  .card:hover, .card:focus-visible { transform: translateY(-3px); border-color: var(--accent); outline: none; }
+  .icon {
+    flex: none; width: 52px; height: 52px; border-radius: 14px;
+    display: grid; place-items: center; font-size: 1.6rem;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, transparent), color-mix(in srgb, var(--accent-2) 22%, transparent));
+  }
+  .info { flex: 1; min-width: 0; }
+  .info h2 { margin: 0; font-size: 1.05rem; }
+  .info p { margin: 3px 0 0; color: var(--muted); font-size: .9rem; }
+  .actions { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .arrow { color: var(--accent); font-size: 1.3rem; transition: transform .18s ease; }
+  .card:hover .arrow { transform: translateX(4px); }
+  .repo {
+    font-size: .78rem; color: var(--muted); text-decoration: none;
+    padding: 2px 8px; border-radius: 999px; border: 1px solid var(--card-border);
+  }
+  .repo:hover { color: var(--accent); border-color: var(--accent); }
+
+  footer { margin-top: 36px; text-align: center; color: var(--muted); font-size: .85rem; }
+  footer a { color: var(--accent); }
+
+  @media (max-width: 480px) {
+    main { padding-top: 40px; }
+    .icon { width: 44px; height: 44px; font-size: 1.35rem; }
+    .card { padding: 14px; gap: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="avatar"><img src="https://github.com/steinim00.png" alt="Prófílmynd steinim00" width="104" height="104"></div>
+    <h1>steinim00</h1>
+    <p>Verkefnin mín á einum stað</p>
+    <a class="profile" href="https://github.com/steinim00" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub-prófíll
+    </a>
+  </header>
+
+  <ul class="links">
+    <li>
+      <a class="card" href="https://steinim00.github.io/gettu-betur/" rel="noopener">
+        <span class="icon" aria-hidden="true">🧠</span>
+        <div class="info"><h2>Gettu betur</h2><p>Spurningakeppni</p></div>
+        <span class="actions"><span class="arrow" aria-hidden="true">→</span><span class="repo" data-href="https://github.com/steinim00/gettu-betur">kóði</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://steinim00.github.io/Kronan-verdsaga/" rel="noopener">
+        <span class="icon" aria-hidden="true">📈</span>
+        <div class="info"><h2>Krónan – verðsaga</h2><p>Verð og saga</p></div>
+        <span class="actions"><span class="arrow" aria-hidden="true">→</span><span class="repo" data-href="https://github.com/steinim00/Kronan-verdsaga">kóði</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://steinim00.github.io/Gjaldmidlun/" rel="noopener">
+        <span class="icon" aria-hidden="true">💱</span>
+        <div class="info"><h2>Gjaldmiðlun</h2><p>Gjaldmiðlar og gengi (ISK)</p></div>
+        <span class="actions"><span class="arrow" aria-hidden="true">→</span><span class="repo" data-href="https://github.com/steinim00/Gjaldmidlun">kóði</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://steinim00.github.io/lichess-analyzer/" rel="noopener">
+        <span class="icon" aria-hidden="true">♟️</span>
+        <div class="info"><h2>Lichess Analyzer</h2><p>Greining á bullet/blitz skákum – keyrir í vafranum</p></div>
+        <span class="actions"><span class="arrow" aria-hidden="true">→</span><span class="repo" data-href="https://github.com/steinim00/lichess-analyzer">kóði</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://steinim00.github.io/Skak/" rel="noopener">
+        <span class="icon" aria-hidden="true">♞</span>
+        <div class="info"><h2>Skák</h2><p>Skákverkefni</p></div>
+        <span class="actions"><span class="arrow" aria-hidden="true">→</span><span class="repo" data-href="https://github.com/steinim00/Skak">kóði</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="https://steinim00.github.io/N-STI/" rel="noopener">
+        <span class="icon" aria-hidden="true">🚀</span>
+        <div class="info"><h2>N-STI</h2><p>Vefverkefni</p></div>
+        <span class="actions"><span class="arrow" aria-hidden="true">→</span><span class="repo" data-href="https://github.com/steinim00/N-STI">kóði</span></span>
+      </a>
+    </li>
+  </ul>
+
+  <footer>
+    <a href="https://github.com/steinim00?tab=repositories" rel="noopener">Sjá öll repo á GitHub</a>
+  </footer>
+</main>
+
+<script>
+  // Nested links are invalid HTML, so the small "kóði" chip is a span that navigates on click.
+  document.querySelectorAll('.repo').forEach(function (el) {
+    el.setAttribute('role', 'link');
+    el.setAttribute('tabindex', '0');
+    function go(e) { e.preventDefault(); e.stopPropagation(); window.open(el.dataset.href, '_blank', 'noopener'); }
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(e); });
+    el.style.cursor = 'pointer';
+  });
+</script>
+</body>
+</html>
